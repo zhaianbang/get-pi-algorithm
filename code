@@ -1,0 +1,29 @@
+#include<iostream>
+#include<cmath>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+double actan(double x)
+{
+	double y=x;
+	double sum=0;
+	int i=1;
+	while(y/i>1e-15)
+	{
+		sum=(i%4==1)?(sum+y/i):(sum-y/i);
+		y=y*(x*x);
+		i+=2;
+	}
+	return sum;
+}
+int main()
+{
+	double a=16.0*actan(1/5.0);
+	double b=4.0*actan(1/239.0);
+	cout<<"pi="<<a-b<<endl;
+	printf("pi=%18.17f\n",a-b);
+	system("pause");
+	return 0;
+}
